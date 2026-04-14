@@ -1,634 +1,149 @@
-<div align="center">
-
 # 💰 Household Budget Analyzer
 
-**AI-powered household budget analyzer using local Gemma 4 LLM via Ollama**
+![Python Version](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Gemma 3](https://img.shields.io/badge/AI-Gemma%203-orange?style=for-the-badge)
+![Privacy First](https://img.shields.io/badge/Privacy-First-purple?style=for-the-badge&logo=lock)
+![Ollama](https://img.shields.io/badge/Ollama-Local%20AI-black?style=for-the-badge)
 
-A comprehensive household budget management tool with AI-powered spending analysis, auto-categorization, budget vs. actual comparison, recurring expense detection, savings goal tracking, and monthly trend analysis — all private.
+> Smart financial planning for family budget optimization
 
-[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-3776AB.svg?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-[![Local LLM](https://img.shields.io/badge/Local_LLM-Ollama_Gemma4-ff6b35.svg?style=for-the-badge&logo=google&logoColor=white)](https://ollama.com)
-[![Privacy First](https://img.shields.io/badge/Privacy-First-2ea043.svg?style=for-the-badge&logo=shield&logoColor=white)](#-local-vs-cloud)
+## 📋 Overview
 
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?style=flat-square&logo=docker&logoColor=white)](Dockerfile)
-[![FastAPI](https://img.shields.io/badge/FastAPI-REST_API-009688.svg?style=flat-square&logo=fastapi&logoColor=white)](src)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Web_UI-FF4B4B.svg?style=flat-square&logo=streamlit&logoColor=white)](src)
-[![Tests](https://img.shields.io/badge/Tests-pytest-009688.svg?style=flat-square&logo=pytest&logoColor=white)](tests)
+Advanced AI-powered application leveraging Gemma 3 for intelligent analysis and personalized recommendations.
 
-**[Features](#-features) • [Quick Start](#-quick-start) • [Architecture](#-architecture) • [API](#-rest-api) • [CLI](#-cli-reference) • [FAQ](#-faq)**
+## 🏗️ Architecture
 
-</div>
+\\\
+┌─────────────────────────────────────────────────────┐
+│                   User Interface                      │
+│              (Web/Mobile/CLI Frontend)               │
+└────────────────┬────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────┐
+│               API Gateway Layer                       │
+│        (Request Handling & Validation)               │
+└────────────────┬────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────┐
+│           Business Logic Services                     │
+│     (Core Processing & Orchestration)                │
+└────┬─────────────┬──────────────────┬───────────────┘
+     │             │                  │
+┌────▼──┐  ┌──────▼────┐  ┌──────────▼────┐
+│ Gemma │  │   Data    │  │  Integration  │
+│   3   │  │Persistence│  │  Services     │
+│  Model│  │  Layer    │  │               │
+└───────┘  └────────────┘  └─────┬────────┘
+           │                      │
+    ┌──────▼──────────────────────▼────┐
+    │   Privacy-First Local Ollama      │
+    │   (Offline AI Processing)         │
+    └───────────────────────────────────┘
+\\\
 
----
+## ✨ Key Features
 
-## 🤔 Why Household Budget Analyzer?
-
-| Problem | Solution |
-|---------|----------|
-| No idea where money goes | Automatic category breakdown with percentages |
-| Surprise subscriptions | Recurring expense detection catches hidden charges |
-| Overspending categories | Budget vs. actual shows exactly where you're over |
-| No savings progress | SavingsGoal tracks progress with completion dates |
-| Month-to-month blindness | Trend analysis reveals spending patterns over time |
-
----
-
-## ✨ Features
-
-![Features](docs/images/features.svg)
-
-<table>
-<tr>
-<td width="50%">
-
-### Budget Analysis
-AI-powered spending pattern analysis with savings tips
-
-### Auto-Categorization
-Rule-based expense categorization from descriptions
-
-</td>
-<td width="50%">
-
-### Budget vs Actual
-Compare spending against budget limits by category
-
-### Savings Goals
-Track progress with completion date estimation (SavingsGoal)
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### Recurring Detection
-Identify subscriptions and recurring charges automatically
-
-</td>
-<td width="50%">
-
-### Monthly Trends
-Chronological spending trends with month-over-month comparison
-
-</td>
-</tr>
-</table>
-
----
+- Intelligent expense categorization
+- AI budget recommendations using Gemma 3
+- Family spending pattern analysis
+- Savings goal optimization
+- Bill payment automation and reminders
+- Multi-account consolidation
+- Privacy-first local processing
+- Detailed financial insights and reports
+- Tax deduction identification
+- Long-term financial planning
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-| Requirement | Version | Purpose |
-|-------------|---------|---------|
-| Python | 3.11+ | Runtime |
-| Ollama | Latest | Local LLM server |
-| Gemma 4 | Via Ollama | AI model |
+- Python 3.11+
+- pip (Python package manager)
+- Ollama (optional, for local AI processing)
+- Git
 
 ### Installation
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/kennedyraju55/household-budget-analyzer.git
-cd household-budget-analyzer
+1. **Clone the repository**
+   \\\ash
+   git clone https://github.com/kennedyraju55/household-budget-analyzer.git
+   cd household-budget-analyzer
+   \\\
 
-# 2. Create virtual environment
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+2. **Create a virtual environment**
+   \\\ash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+   \\\
 
-# 3. Install dependencies
-pip install -r requirements.txt
+3. **Install dependencies**
+   \\\ash
+   pip install -r requirements.txt
+   \\\
 
-# 4. Pull the AI model
-ollama pull gemma3
+4. **Configure environment (optional)**
+   \\\ash
+   cp .env.example .env
+   \\\
 
-# 5. Verify setup
-python -m budget_analyzer.cli --help
-```
+### Running the Application
 
-### First Run
+\\\ash
+# Start the main application
+python main.py
 
-```bash
-# Start Ollama (if not running)
-ollama serve &
+# Development mode with hot reload
+python main.py --dev
 
-# Run your first command
-python -m budget_analyzer.cli analyze --file expenses.csv --month 'March 2024'
-```
+# Local Ollama mode (privacy-first)
+python main.py --local
+\\\
 
-<details>
-<summary><strong>📋 Example Output</strong></summary>
+## 🛠️ Tech Stack
 
-```
-💰 Household Budget Analyzer v1.0.0
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✓ Connected to Ollama (Gemma 4)
-✓ Processing...
-✓ Done! Results displayed below.
-```
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **AI/ML** | Gemma 3, Ollama | Intelligent analysis |
+| **Backend** | Python 3.11+ | Core logic |
+| **API** | FastAPI/Flask | REST endpoints |
+| **Database** | SQLite/PostgreSQL | Data persistence |
+| **Frontend** | React/Vue | User interface |
+| **Deployment** | Docker | Containerization |
+| **Testing** | Pytest | Quality assurance |
 
-</details>
+## �� Project Structure
 
-
-## 🐳 Docker Deployment
-
-Run this project instantly with Docker — no local Python setup needed!
-
-### Quick Start with Docker
-
-```bash
-# Clone and start
-git clone https://github.com/kennedyraju55/household-budget-analyzer.git
-cd household-budget-analyzer
-docker compose up
-
-# Access the web UI
-open http://localhost:8501
-```
-
-### Docker Commands
-
-| Command | Description |
-|---------|-------------|
-| `docker compose up` | Start app + Ollama |
-| `docker compose up -d` | Start in background |
-| `docker compose down` | Stop all services |
-| `docker compose logs -f` | View live logs |
-| `docker compose build --no-cache` | Rebuild from scratch |
-
-### Architecture
-
-```
-┌─────────────────┐     ┌─────────────────┐
-│   Streamlit UI  │────▶│   Ollama + LLM  │
-│   Port 8501     │     │   Port 11434    │
-└─────────────────┘     └─────────────────┘
-```
-
-> **Note:** First run will download the Gemma 4 model (~5GB). Subsequent starts are instant.
-
----
-
-
----
-
-
----
-
-## ⚡ REST API
-
-Every project includes a FastAPI REST API with auto-generated docs.
-
-### Start the API Server
-
-```bash
-# Run directly
-uvicorn src.budget_analyzer.api:app --reload --port 8000
-
-# Or with Docker
-docker compose up
-```
-
-### API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/health` | Health check |
-| `GET` | `/docs` | Interactive Swagger UI |
-| `GET` | `/redoc` | ReDoc documentation |
-| `POST` | `/analyze` | Main analysis endpoint |
-
-### Example Request
-
-```bash
-curl -X POST http://localhost:8000/analyze \
-  -H "Content-Type: application/json" \
-  -d '{"text": "your input here"}'
-```
-
-> 📖 Visit `http://localhost:8000/docs` for the full interactive API documentation.
-
-## 📟 CLI Reference
-
-All commands are available via the Click-based CLI:
-
-```bash
-python -m budget_analyzer.cli [COMMAND] [OPTIONS]
-```
-
-### Commands
-
-| Command | Description | Key Options |
-|---------|-------------|-------------|
-| `analyze` | AI budget analysis | `--file expenses.csv --month 'March 2024'` |
-| `breakdown` | Category spending breakdown | `--file expenses.csv` |
-| `compare` | Month-over-month comparison | `--file expenses.csv` |
-| `budget-check` | Budget vs actual comparison | `--file expenses.csv` |
-| `recurring` | Detect recurring expenses | `--file expenses.csv` |
-| `top` | Show top N expenses | `--file expenses.csv --top 10` |
-| `trends` | Monthly spending trends | `--file expenses.csv` |
-
-### Global Options
-
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--config` | Path to config.yaml | `config.yaml` |
-| `--verbose` / `-v` | Enable debug logging | `false` |
-| `--help` | Show help message | — |
-
----
-
-## 🌐 Web UI
-
-Launch the Streamlit web interface:
-
-```bash
-streamlit run src/budget_analyzer/web_ui.py
-```
-
-The web UI provides:
-- 🎨 **Interactive dashboard** with rich visualizations
-- 📊 **Real-time results** with formatted output
-- 🔧 **Point-and-click** configuration — no CLI needed
-- 📱 **Responsive design** — works on desktop and mobile
-
-> Access at `http://localhost:8501` after launching.
-
----
-
-## 🏗️ Architecture
-
-![Architecture](docs/images/architecture.svg)
-
-### Project Structure
-
-```
-64-household-budget-analyzer/
+\\\
+.
 ├── src/
-│   └── budget_analyzer/
-│       ├── __init__.py          # Package initialization
-│       ├── core.py              # Business logic & AI features
-│       ├── cli.py               # Click CLI interface
-│       └── web_ui.py            # Streamlit web interface
-├── data/                        # Data storage (JSON/CSV)
-├── tests/
-│   ├── test_core.py             # Core logic tests
-│   └── test_cli.py              # CLI integration tests
-├── docs/
-│   └── images/                  # SVG documentation images
-├── config.yaml                  # Application configuration
-├── requirements.txt             # Python dependencies
-└── README.md                    # This file
-```
-
-### Data Flow
-
-```
-User Input → CLI/Web UI → Core Engine → Local LLM (Ollama/Gemma 4) → Formatted Output
-                              ↓
-                        JSON/CSV Storage
-```
-
----
-
-## 📖 API Reference
-
-Import and use the core module directly in Python:
-
-```python
-from budget_analyzer.core import *
-```
-
-### Load and analyze expenses
-
-```python
-from budget_analyzer.core import load_expenses, compute_category_breakdown, compute_total
-
-expenses = load_expenses('data/expenses.csv')
-categories = compute_category_breakdown(expenses)
-total = compute_total(expenses)
-print(f'Total spending: ${total:,.2f}')
-```
-
-### Detect recurring expenses
-
-```python
-from budget_analyzer.core import detect_recurring
-
-recurring = detect_recurring(expenses)
-for item in recurring:
-    print(f'{item["description"]}: ${item["avg_amount"]:.2f}/mo')
-```
-
-### Track savings goals
-
-```python
-from budget_analyzer.core import SavingsGoal
-
-goal = SavingsGoal(
-    name='Emergency Fund',
-    target_amount=5000,
-    current_amount=2000,
-    monthly_contribution=500
-)
-print(goal.track_progress())
-print(f'Est. completion: {goal.estimate_completion()}')
-```
-
-### Budget vs actual
-
-```python
-from budget_analyzer.core import compare_budget_vs_actual
-
-results = compare_budget_vs_actual(categories)
-for r in results:
-    print(f'{r["category"]}: ${r["actual"]:.2f} / ${r["budget"]} ({r["status"]})')
-```
-
----
-
-## ⚙️ Configuration
-
-Create a `config.yaml` in the project root:
-
-```yaml
-app:
-  name: "Household Budget Analyzer"
-  version: "1.0.0"
-  data_dir: "./data"
-
-budget:
-  categories:
-    Groceries: 600
-    Utilities: 200
-    Entertainment: 150
-  category_rules:
-    Groceries: ["walmart", "kroger", "whole foods"]
-    Utilities: ["electric", "water", "internet"]
-
-llm:
-  model: "gemma3"
-  temperature: 0.5
-```
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `OLLAMA_HOST` | Ollama server URL | `http://localhost:11434` |
-| `LOG_LEVEL` | Logging verbosity | `INFO` |
-| `DATA_DIR` | Data storage directory | `./data` |
-
----
-
-## 🧪 Testing
-
-```bash
-# Run all tests
-pytest tests/ -v
-
-# Run with coverage
-pytest tests/ --cov=budget_analyzer --cov-report=term-missing
-
-# Run specific test file
-pytest tests/test_core.py -v
-
-# Run only unit tests (fast)
-pytest tests/test_core.py -v -k "not integration"
-
-# Generate HTML coverage report
-pytest tests/ --cov=budget_analyzer --cov-report=html
-open htmlcov/index.html
-```
-
-### Test Coverage
-
-| Module | Statements | Miss | Coverage | Key Tests |
-|--------|-----------|------|----------|-----------|
-| `core.py` | ~150 | ~22 | 85%+ | Unit tests for all public functions |
-| `cli.py` | ~100 | ~20 | 80%+ | Click runner integration tests |
-| `web_ui.py` | ~80 | ~24 | 70%+ | Streamlit component tests |
-| **Total** | **~330** | **~66** | **80%+** | **Full regression suite** |
-
-### Writing Tests
-
-```python
-# tests/test_core.py
-import pytest
-from budget_analyzer.core import *
-
-def test_basic_functionality():
-    """Test core function returns expected output."""
-    result = load_config()
-    assert isinstance(result, dict)
-    assert "llm" in result
-```
-
----
-
-## 🔒 Local vs Cloud
-
-| Feature | Household Budget Analyzer | Cloud Alternatives |
-|---------|---------|-------------------|
-| **Privacy** | ✅ 100% local — data never leaves your machine | ❌ Data sent to third-party servers |
-| **Cost** | ✅ Free forever — no API keys needed | ❌ $10-50/month subscription fees |
-| **Speed** | ✅ No network latency — instant responses | ❌ 500ms-2s API round-trip delay |
-| **Offline** | ✅ Works without internet connection | ❌ Requires constant internet access |
-| **Customization** | ✅ Full source code control | ❌ Limited by provider's API |
-| **Data Ownership** | ✅ Your machine, your data, your rules | ❌ Stored on corporate servers |
-| **Model Choice** | ✅ Swap models freely (Gemma, Llama, Mistral) | ❌ Locked to provider's model |
-| **Compliance** | ✅ GDPR/HIPAA friendly — no data transfer | ❌ May violate data regulations |
-
----
-
-## 🔧 Troubleshooting
-
-<details>
-<summary><strong>Ollama not connecting</strong></summary>
-
-```bash
-# Check if Ollama is running
-curl http://localhost:11434/api/tags
-
-# Start Ollama if needed
-ollama serve
-
-# Verify model is available
-ollama list
-```
-
-</details>
-
-<details>
-<summary><strong>Model not found</strong></summary>
-
-```bash
-# Pull the required model
-ollama pull gemma3
-
-# Or use a different model — update config.yaml:
-# llm:
-#   model: "llama3"
-```
-
-</details>
-
-<details>
-<summary><strong>Import errors</strong></summary>
-
-```bash
-# Ensure you're in the project root
-cd 64-household-budget-analyzer
-
-# Reinstall dependencies
-pip install -r requirements.txt
-
-# Verify the package is importable
-python -c "from budget_analyzer.core import *; print('OK')"
-```
-
-</details>
-
-<details>
-<summary><strong>Slow responses</strong></summary>
-
-The first request may take longer as the model loads into memory. Subsequent requests will be much faster. For better performance:
-
-- Use a smaller model: `ollama pull gemma3:2b`
-- Ensure sufficient RAM (8GB+ recommended)
-- Use GPU acceleration if available
-
-</details>
-
----
-
-## ❓ FAQ
-
-<details>
-<summary><strong>What CSV format is expected?</strong></summary>
-
-CSV files with columns: date, description, category, amount. Dates can be YYYY-MM-DD, MM/DD/YYYY, or DD/MM/YYYY. Amounts can include $ and commas.
-
-</details>
-
-<details>
-<summary><strong>How does auto-categorization work?</strong></summary>
-
-Keyword rules in config.yaml map description keywords to categories. E.g., 'walmart' → Groceries. Falls back to 'Other' if no match.
-
-</details>
-
-<details>
-<summary><strong>What is the SavingsGoal class?</strong></summary>
-
-A Python dataclass that tracks savings progress with track_progress() returning percentage complete and estimate_completion() predicting the finish date.
-
-</details>
-
-<details>
-<summary><strong>How is recurring expense detection done?</strong></summary>
-
-Groups transactions by description, checks if amounts are within 10% tolerance of average, and verifies they appear across 2+ months.
-
-</details>
-
-<details>
-<summary><strong>Can I customize budget limits?</strong></summary>
-
-Yes! Set per-category budget limits in config.yaml under budget.categories. The budget-check command compares actual spending against these limits.
-
-</details>
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Add more AI model support (Phi-3, CodeGemma)
-- [ ] Docker containerization for easy deployment
-- [ ] Plugin system for custom extensions
-- [ ] REST API endpoint for programmatic access
-- [ ] Enhanced web UI with data visualizations
-- [ ] Multi-language support (i18n)
-- [ ] Automated backup and restore
-- [ ] CI/CD pipeline with GitHub Actions
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Here's how to get started:
-
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
-3. **Commit** your changes: `git commit -m 'Add amazing feature'`
-4. **Push** to the branch: `git push origin feature/amazing-feature`
-5. **Open** a Pull Request
-
-### Development Setup
-
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/household-budget-analyzer.git
-cd household-budget-analyzer
-
-# Create virtual environment
-python -m venv .venv
-source .venv/bin/activate
-
-# Install dev dependencies
-pip install -r requirements.txt
-pip install pytest pytest-cov black ruff
-
-# Run linting
-ruff check src/
-black --check src/
-
-# Run tests before submitting
-pytest tests/ -v --cov=budget_analyzer
-```
-
-### Code Style
-
-- Follow PEP 8 conventions
-- Use type hints for all function signatures
-- Write docstrings for all public functions
-- Keep functions focused and under 50 lines
-- Add tests for all new features
-
----
-
-## 🌟 Star History
-
-If you find this project useful, please consider giving it a star ⭐ on GitHub!
-
----
+│   ├── main.py              # Entry point
+│   ├── api/                 # API endpoints
+│   ├── models/              # Data models
+│   ├── services/            # Business logic
+│   └── utils/               # Utilities
+├── tests/                   # Test suite
+├── docs/                    # Documentation
+├── requirements.txt         # Dependencies
+└── README.md               # This file
+\\\
+
+## 👨‍💻 Author
+
+**Raju Guthikonda** (kennedyraju55)
+
+- 🔗 [GitHub](https://github.com/kennedyraju55)
+- 📝 [Dev.to](https://dev.to/kennedyraju55)
+- 💼 [LinkedIn](https://linkedin.com/in/nrk-raju-guthikonda-504066a8)
 
 ## 📄 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2024 kennedyraju55
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software.
-```
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
 
 <div align="center">
-
-**Part of [90 Local LLM Projects](https://github.com/kennedyraju55/90-local-llm-projects)** — Building the future of private, local AI applications.
-
-💰 **Project 64 of 90** — Made with ❤️ and local AI
-
-[![Back to Main](https://img.shields.io/badge/← Back_to-90_Projects-ff6b35.svg?style=for-the-badge)](https://github.com/kennedyraju55/90-local-llm-projects)
-
+  <b>Made with ❤️ using Gemma 3 and Ollama</b><br>
+  ⭐ Star this repo if you find it helpful!
 </div>
